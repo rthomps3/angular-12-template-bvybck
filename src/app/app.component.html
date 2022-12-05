@@ -1,0 +1,41 @@
+<h1>Hi Angular 12</h1>
+<br />
+<div style="width: 100px; height: 100px;">
+  <!-- define the user interface using HTML -->
+  <div>
+    <!-- display a file input to allow the user to select a photo of the receipt -->
+    <input type="file" (change)="uploadReceipt($event)" />
+
+    <!-- display the uploaded receipt, if it exists -->
+    <img *ngIf="receipt" [src]="receipt" />
+
+    <!-- display a form to allow the user to add meta data to the receipt -->
+    <form (submit)="addMetaData()">
+      <label>
+        Date:
+        <input type="date" [(ngModel)]="metaData.date" name="date" />
+      </label>
+      <br />
+      <label>
+        Description:
+        <input
+          type="text"
+          [(ngModel)]="metaData.description"
+          name="description"
+        />
+      </label>
+      <br />
+      <label>
+        Amount:
+        <input type="number" [(ngModel)]="metaData.amount" name="amount" />
+      </label>
+      <br />
+      <button type="submit">Add Meta Data</button>
+    </form>
+  </div>
+</div>
+
+<!--
+<app-post-create (postCreated)="onPostAdded()"></app-post-create>
+<app-post-list [posts]="storedPost"> </app-post-list>
+-->
